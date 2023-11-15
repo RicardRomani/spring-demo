@@ -1,6 +1,8 @@
 package com.example.springdemo.tests;
 
 import com.example.springdemo.config.ApiConfig;
+import com.example.springdemo.errors.ApiErrorCode;
+import com.example.springdemo.errors.RicardRestException;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
@@ -92,7 +94,8 @@ public class TestsController {
         return request.getName() + request.getEventId();
     }
 
-
-
-
+    @GetMapping("error")
+    private void throwError(){
+        throw new RicardRestException(ApiErrorCode.GENERIC_DEVELOPER_ERROR);
+    }
 }
