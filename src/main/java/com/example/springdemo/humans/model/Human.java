@@ -1,14 +1,19 @@
 package com.example.springdemo.humans.model;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Arrays;
 
+@Data
 public class Human {
 
     private static long ID_GENERATOR = 0;
 
+    @Setter(AccessLevel.NONE)
     private final long id;
     private String name;
     private String surname;
@@ -25,42 +30,6 @@ public class Human {
 
     public Human(String name, String surname, int age, Gender gender) {
         this(++ID_GENERATOR, name, surname, age, gender);
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
     }
 
     public enum Gender {
